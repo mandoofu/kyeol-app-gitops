@@ -6,9 +6,12 @@ namespace: kyeol
 
 resources:
   - ../../base
+  - patches/hpa-patch.yaml
 
-commonLabels:
-  environment: prod
+labels:
+  - pairs:
+      environment: prod
+    includeSelectors: false
 
 images:
   - name: ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-storefront
@@ -16,7 +19,15 @@ images:
     newTag: prod-latest
 
 patches:
-  - path: patches/replicas-patch.yaml
-  - path: patches/ingress-patch.yaml
-  - path: patches/resources-patch.yaml
-  - path: patches/hpa-patch.yaml
+  - target:
+      kind: Deployment
+      name: storefront
+    path: patches/replicas-patch.yaml
+  - target:
+      kind: Ingress
+      name: kyeol-ingress
+    path: patches/ingress-patch.yaml
+  - target:
+      kind: Deployment
+      name: storefront
+    path: patches/resources-patch.yaml

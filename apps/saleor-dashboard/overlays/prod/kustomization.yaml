@@ -7,8 +7,10 @@ namespace: kyeol
 resources:
   - ../../base
 
-commonLabels:
-  environment: prod
+labels:
+  - pairs:
+      environment: prod
+    includeSelectors: false
 
 images:
   - name: ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard
@@ -16,6 +18,15 @@ images:
     newTag: prod-latest
 
 patches:
-  - path: patches/ingress-patch.yaml
-  - path: patches/replicas-patch.yaml
-  - path: patches/resources-patch.yaml
+  - target:
+      kind: Ingress
+      name: dashboard-ingress
+    path: patches/ingress-patch.yaml
+  - target:
+      kind: Deployment
+      name: dashboard
+    path: patches/replicas-patch.yaml
+  - target:
+      kind: Deployment
+      name: dashboard
+    path: patches/resources-patch.yaml
