@@ -14,7 +14,7 @@ labels:
 
 images:
   - name: ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard
-    newName: 827913617839.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard
+    newName: 827913617839.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-prod-dashboard
     newTag: prod-latest
 
 patches:

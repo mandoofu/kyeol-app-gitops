@@ -1,0 +1,8 @@
+{
+  "Changes": [
+    {"Action":"UPSERT","ResourceRecordSet":{"Name":"origin-stage-kyeol.msp-g1.click","Type":"A","AliasTarget":{"HostedZoneId":"Z1GM3OXH4ZPM65","DNSName":"k8s-kyeol-kyeoling-1a2aa925ac-445004701.ap-southeast-2.elb.amazonaws.com","EvaluateTargetHealth":true}}},
+    {"Action":"UPSERT","ResourceRecordSet":{"Name":"stage-dashboard-kyeol.msp-g1.click","Type":"A","AliasTarget":{"HostedZoneId":"Z1GM3OXH4ZPM65","DNSName":"k8s-kyeol-dashboar-1d1bc3fb2e-1498152400.ap-southeast-2.elb.amazonaws.com","EvaluateTargetHealth":true}}},
+    {"Action":"UPSERT","ResourceRecordSet":{"Name":"origin-prod-kyeol.msp-g1.click","Type":"A","AliasTarget":{"HostedZoneId":"Z1GM3OXH4ZPM65","DNSName":"k8s-kyeol-kyeoling-4253476746-1189981984.ap-southeast-2.elb.amazonaws.com","EvaluateTargetHealth":true}}},
+    {"Action":"UPSERT","ResourceRecordSet":{"Name":"dashboard-kyeol.msp-g1.click","Type":"A","AliasTarget":{"HostedZoneId":"Z1GM3OXH4ZPM65","DNSName":"k8s-kyeol-dashboar-ae1b0ff261-1367961480.ap-southeast-2.elb.amazonaws.com","EvaluateTargetHealth":true}}}
+  ]
+}
