@@ -1,0 +1,24 @@
+# ArgoCD Application - Saleor Storefront PROD
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: saleor-storefront-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: kyeol-apps
+  source:
+    repoURL: https://github.com/mandoofu/kyeol-app-gitops.git
+    targetRevision: main
+    path: apps/saleor/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc  # PROD 클러스터 연결 필요
+    namespace: kyeol
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true

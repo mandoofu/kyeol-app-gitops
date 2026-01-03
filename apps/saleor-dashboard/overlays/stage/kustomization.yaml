@@ -1,0 +1,21 @@
+# Saleor Dashboard - STAGE Overlay
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: kyeol
+
+resources:
+  - ../../base
+
+commonLabels:
+  environment: stage
+
+images:
+  - name: ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard
+    newName: 827913617839.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard
+    newTag: stage-latest
+
+patches:
+  - path: patches/ingress-patch.yaml
+  - path: patches/replicas-patch.yaml
+  - path: patches/resources-patch.yaml

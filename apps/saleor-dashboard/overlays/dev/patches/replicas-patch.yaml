@@ -1,0 +1,7 @@
+# Replicas Patch - Dashboard DEV
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+spec:
+  replicas: 1

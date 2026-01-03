@@ -1,0 +1,17 @@
+# Resources Patch - PROD (프로덕션급)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront
+spec:
+  template:
+    spec:
+      containers:
+        - name: storefront
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"

@@ -1,0 +1,23 @@
+# ArgoCD Application - Saleor Dashboard PROD
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: saleor-dashboard-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: kyeol-apps
+  source:
+    repoURL: https://github.com/mandoofu/kyeol-app-gitops.git
+    targetRevision: main
+    path: apps/saleor-dashboard/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc  # PROD 클러스터
+    namespace: kyeol
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

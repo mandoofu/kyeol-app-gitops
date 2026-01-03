@@ -1,0 +1,17 @@
+# Resources Patch - STAGE (DEV보다 상향)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storefront
+spec:
+  template:
+    spec:
+      containers:
+        - name: storefront
+          resources:
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

@@ -1,0 +1,48 @@
+# Saleor Dashboard Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+  labels:
+    app: dashboard
+    component: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dashboard
+  template:
+    metadata:
+      labels:
+        app: dashboard
+        component: frontend
+    spec:
+      containers:
+        - name: dashboard
+          image: ACCOUNT_ID.dkr.ecr.ap-southeast-2.amazonaws.com/min-kyeol-dashboard:latest
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: API_URI
+              value: "https://storefront1.saleor.cloud/graphql/"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      restartPolicy: Always
