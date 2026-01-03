@@ -26,6 +26,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: storefront
+                name: storefront-svc
                 port:
                   number: 3000
