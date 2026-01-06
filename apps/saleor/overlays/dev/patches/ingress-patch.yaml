@@ -28,6 +28,10 @@ metadata:
     # ✅ ExternalDNS가 이 hostname으로 Route53 레코드 생성
     external-dns.alpha.kubernetes.io/hostname: "origin-dev-kyeol.msp-g1.click"
 
+    # ✅ WAF 연결 (terraform output waf_web_acl_arn으로 조회)
+    # ALB 재생성 시 자동으로 WAF 재연결됨
+    alb.ingress.kubernetes.io/wafv2-acl-arn: ""  # TODO: terraform output waf_web_acl_arn 값 입력
+
 spec:
   # ✅ (권장) 명시적으로 IngressClass 지정 (클러스터 정책에 따라 kubernetes.io/ingress.class만으로도 동작)
   ingressClassName: alb

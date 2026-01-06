@@ -16,6 +16,8 @@ metadata:
     # alb.ingress.kubernetes.io/certificate-arn: <ACM_ARN>
     # ExternalDNS hostname은 오버레이에서 설정
     # external-dns.alpha.kubernetes.io/hostname: <HOSTNAME>
+    # WAF ARN은 오버레이에서 설정 (terraform output waf_web_acl_arn)
+    # alb.ingress.kubernetes.io/wafv2-acl-arn: <WAF_ARN>
   labels:
     app.kubernetes.io/part-of: saleor
 spec:
